@@ -1,5 +1,6 @@
 import datetime
 
+# Definindo a classe Paciente
 class Paciente:
     def __init__(self, nome, idade):
         self.nome = nome
@@ -9,11 +10,13 @@ class Paciente:
     def adicionar_evento(self, evento):
         self.historico.append(evento)
 
+# Definindo a classe EventoSaude
 class EventoSaude:
     def __init__(self, descricao, data):
         self.descricao = descricao
         self.data = data
 
+# Definindo a classe Triagem
 class Triagem:
     def __init__(self, pressao_arterial, temperatura, sintomas, data):
         self.pressao_arterial = pressao_arterial
@@ -23,9 +26,11 @@ class Triagem:
 
     def verificar_estado_saude(self):
         if self.temperatura > 37.8:
-            print(f"Este paciente está com febre")
             return "\nATENÇÃO: Este paciente precisa de atendimento médico! Dentro de alguns minutos um de nossos profissionais entrará em contato."
+        else:
+            return "Este paciente está sem febre."
 
+# Definindo a classe AyuCare
 class AyuCare:
     def __init__(self):
         self.pacientes = {}
@@ -46,7 +51,7 @@ class AyuCare:
         print(f"\nTriagem realizada para paciente {paciente.nome}.\n {resultado_triagem}")
 
     def monitorar_saude(self, paciente):
-        descricao = input(f"\nComo você está se sentindo hoje {paciente.nome}? ")
+        descricao = input(f"\nLembrando que toda doença sempre se inicia no mental antes de vir para o corpo físico.\nComo você está se sentindo hoje {paciente.nome}? ")
         data = datetime.date.today()
         evento = EventoSaude(descricao, data)
         paciente.adicionar_evento(evento)
@@ -59,17 +64,16 @@ class AyuCare:
                 print(f"\n--> Triagem <--")
                 print(f"\nData: {evento.data}\nPressão arterial: {evento.pressao_arterial}\nTemperatura: {evento.temperatura}\nSintomas: {evento.sintomas}")
                 resultado_triagem = evento.verificar_estado_saude()
-                if resultado_triagem:
-                    print(resultado_triagem)
+                print(resultado_triagem)
             elif isinstance(evento, EventoSaude):
                 print(f"Em {evento.data}: {paciente.nome} estava {evento.descricao}")
 
-# Função para coletar informações do paciente
 def obter_informacoes_paciente():
     nome = input("\nDigite o nome do paciente que está sendo cadastrado: ")
     idade = int(input("\nDigite a idade: "))
     return Paciente(nome, idade)
 
+# Início do programa principal
 if __name__ == "__main__":
     ayucare = AyuCare()
 
@@ -79,7 +83,7 @@ if __name__ == "__main__":
         print("\nLembre-se que o preenchimento do diário é de suma importância para que conheçamos você e sua rotina.\n")
         print("1. Cadastrar Paciente")
         print("2. Realizar Triagem")
-        print("3. Monitorar Saúde e Humor")
+        print("3. Monitorar Humor")
         print("4. Exibir Histórico de um Paciente")
         print("5. Sair")
 
@@ -125,7 +129,7 @@ if __name__ == "__main__":
             else:
                 print("Opção inválida. Tente novamente.")
         elif escolha == "5":
-            print("Saindo do programa. Obrigado!")
+            print("Encerrando seu Diário por aqui! Não se esqueça de voltar todos os dias e sempre que sentir algo diferente.")
             break
         else:
             print("Opção inválida. Tente novamente.")
