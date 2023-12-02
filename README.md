@@ -1,6 +1,6 @@
 ### GlobalSolution-1TDSZ-2023-2-Python
 
-##**--- Nome e RM dos membros do grupo ---**
+**--- Nome e RM dos membros do grupo ---**
 
 - Juliana Moreira da Silva – RM:554113
 - Kevin Christian Nobre – RM:552590
